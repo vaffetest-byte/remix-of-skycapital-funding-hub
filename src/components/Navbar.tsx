@@ -24,6 +24,7 @@ const Navbar = () => {
     { label: "How It Works", href: "#process" },
     { label: "Why Us", href: "#why-us" },
     { label: "Testimonials", href: "#testimonials" },
+    { label: "Funding Deals", href: "/blog", isPage: true },
   ];
 
   const handleNavClick = (href: string) => {
@@ -73,13 +74,23 @@ const Navbar = () => {
           {/* Desktop navigation */}
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
-              <button
-                key={link.label}
-                onClick={() => handleNavClick(link.href)}
-                className="text-white/80 hover:text-white transition-colors duration-300 font-medium relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-accent after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left"
-              >
-                {link.label}
-              </button>
+              link.isPage ? (
+                <Link
+                  key={link.label}
+                  to={link.href}
+                  className="text-white/80 hover:text-white transition-colors duration-300 font-medium relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-accent after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <button
+                  key={link.label}
+                  onClick={() => handleNavClick(link.href)}
+                  className="text-white/80 hover:text-white transition-colors duration-300 font-medium relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-accent after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left"
+                >
+                  {link.label}
+                </button>
+              )
             ))}
           </div>
 
@@ -115,16 +126,27 @@ const Navbar = () => {
           <div className="lg:hidden py-6 border-t border-white/10">
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
-                <button
-                  key={link.label}
-                  onClick={() => {
-                    handleNavClick(link.href);
-                    setIsOpen(false);
-                  }}
-                  className="text-white/80 hover:text-white transition-colors duration-300 font-medium py-2 text-left"
-                >
-                  {link.label}
-                </button>
+                link.isPage ? (
+                  <Link
+                    key={link.label}
+                    to={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className="text-white/80 hover:text-white transition-colors duration-300 font-medium py-2"
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <button
+                    key={link.label}
+                    onClick={() => {
+                      handleNavClick(link.href);
+                      setIsOpen(false);
+                    }}
+                    className="text-white/80 hover:text-white transition-colors duration-300 font-medium py-2 text-left"
+                  >
+                    {link.label}
+                  </button>
+                )
               ))}
               <hr className="border-white/10 my-2" />
               <a href="tel:5165230489" className="flex items-center gap-2 text-white/80 py-2">
