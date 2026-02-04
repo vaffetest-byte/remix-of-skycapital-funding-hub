@@ -20,53 +20,80 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  // Check admin status via secure server-side function
-  const checkAdminStatus = async () => {
-    try {
-      const { data, error } = await supabase.rpc('is_admin');
-      if (error) {
-        console.error('Error checking admin status:', error);
-        setIsAdmin(false);
-      } else {
-        setIsAdmin(data === true);
-      }
-    } catch (err) {
-      console.error('Failed to check admin status:', err);
-      setIsAdmin(false);
-    }
-  };
-
   useEffect(() => {
-    // Set up auth state listener FIRST
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (event, session) => {
-        setSession(session);
-        setUser(session?.user ?? null);
-        
-        if (session?.user) {
-          // Use setTimeout to avoid Supabase auth deadlock
-          setTimeout(() => checkAdminStatus(), 0);
-        } else {
-          setIsAdmin(false);
-        }
-        
-        setLoading(false);
-      }
-    );
+    let isMounted = true;
 
-    // THEN check for existing session
-    supabase.auth.getSession().then(async ({ data: { session } }) => {
-      setSession(session);
-      setUser(session?.user ?? null);
-      
-      if (session?.user) {
-        await checkAdminStatus();
+    const applySession = (nextSession: Session | null) => {
+      if (!isMounted) return;
+      setSession(nextSession);
+      setUser(nextSession?.user ?? null);
+    };
+
+    const checkAdminStatus = async () => {
+      try {
+        const { data, error } = await supabase.rpc('is_admin');
+        if (!isMounted) return;
+
+        if (error) {
+          console.error('Error checking admin status:', error);
+          setIsAdmin(false);
+          return;
+        }
+
+        setIsAdmin(data === true);
+      } catch (err) {
+        if (!isMounted) return;
+        console.error('Failed to check admin status:', err);
+        setIsAdmin(false);
       }
-      
-      setLoading(false);
+    };
+
+    // Listener for ongoing auth changes
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, nextSession) => {
+      applySession(nextSession);
+
+      // Keep `loading` true until role check finishes to prevent false "Access Denied".
+      setLoading(true);
+
+      if (!nextSession?.user) {
+        setIsAdmin(false);
+        setLoading(false);
+        return;
+      }
+
+      // Avoid potential auth deadlocks by deferring the RPC.
+      setTimeout(async () => {
+        await checkAdminStatus();
+        if (!isMounted) return;
+        setLoading(false);
+      }, 0);
     });
 
-    return () => subscription.unsubscribe();
+    // Initial load (controls loading)
+    (async () => {
+      try {
+        const {
+          data: { session: initialSession },
+        } = await supabase.auth.getSession();
+
+        applySession(initialSession);
+
+        if (initialSession?.user) {
+          await checkAdminStatus();
+        } else if (isMounted) {
+          setIsAdmin(false);
+        }
+      } finally {
+        if (isMounted) setLoading(false);
+      }
+    })();
+
+    return () => {
+      isMounted = false;
+      subscription.unsubscribe();
+    };
   }, []);
 
   const signIn = async (email: string, password: string) => {
