@@ -89,22 +89,25 @@ function BlogPostCard({ post, featured = false }: { post: any; featured?: boolea
         featured ? 'md:col-span-2 md:row-span-2' : ''
       }`}
     >
-      <div className={`relative overflow-hidden ${featured ? 'aspect-[16/9]' : 'aspect-[4/3]'}`}>
+      <div className={`relative ${featured ? 'aspect-[16/9]' : 'aspect-[4/3]'}`}>
         {post.featured_image_url ? (
           <img
             src={post.featured_image_url}
             alt={post.title}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            loading="lazy"
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
         ) : (
-          <div className="w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+          <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
             <Briefcase className="w-16 h-16 text-primary/40" />
           </div>
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+        
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
         
         {/* Badges */}
-        <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+        <div className="absolute top-4 left-4 flex flex-wrap gap-2 z-10">
           {post.funding_amount && (
             <Badge className="bg-accent text-accent-foreground font-semibold shadow-lg backdrop-blur-sm">
               <DollarSign className="h-3 w-3 mr-1" />
@@ -112,33 +115,34 @@ function BlogPostCard({ post, featured = false }: { post: any; featured?: boolea
             </Badge>
           )}
         </div>
-      </div>
-      
-      <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-        <div className="flex items-center gap-3 mb-3 text-sm text-white/70">
-          <span className="flex items-center gap-1.5">
-            <Building2 className="h-4 w-4" />
-            {post.company_name}
-          </span>
-          {post.deal_date && (
+        
+        {/* Content */}
+        <div className="absolute bottom-0 left-0 right-0 p-6 text-white z-10">
+          <div className="flex items-center gap-3 mb-3 text-sm text-white/80">
             <span className="flex items-center gap-1.5">
-              <Calendar className="h-4 w-4" />
-              {format(new Date(post.deal_date), 'MMM yyyy')}
+              <Building2 className="h-4 w-4" />
+              {post.company_name}
             </span>
+            {post.deal_date && (
+              <span className="flex items-center gap-1.5">
+                <Calendar className="h-4 w-4" />
+                {format(new Date(post.deal_date), 'MMM yyyy')}
+              </span>
+            )}
+          </div>
+          
+          <h2 className={`font-heading font-bold leading-tight mb-2 transition-colors group-hover:text-accent ${
+            featured ? 'text-2xl md:text-3xl' : 'text-lg md:text-xl'
+          }`}>
+            {post.title}
+          </h2>
+          
+          {featured && (
+            <p className="text-white/80 line-clamp-2 text-sm md:text-base">
+              {post.content}
+            </p>
           )}
         </div>
-        
-        <h2 className={`font-heading font-bold leading-tight mb-2 transition-colors group-hover:text-accent ${
-          featured ? 'text-2xl md:text-3xl' : 'text-lg md:text-xl'
-        }`}>
-          {post.title}
-        </h2>
-        
-        {featured && (
-          <p className="text-white/80 line-clamp-2 text-sm md:text-base">
-            {post.content}
-          </p>
-        )}
       </div>
     </article>
   );
