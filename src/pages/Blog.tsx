@@ -6,6 +6,14 @@ import { Calendar, DollarSign, Building2, ArrowLeft, TrendingUp, Briefcase } fro
 import { format } from 'date-fns';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import SEOHead from '@/components/SEOHead';
+
+// Blog SEO configuration
+const BLOG_SEO = {
+  title: 'Funding Success Stories | Business Funding Blog | SkyCapital',
+  description: 'Discover how SkyCapital has helped businesses secure funding nationwide. Read success stories of MCA, working capital loans, and small business financing deals.',
+  canonicalUrl: 'https://skycapnow.com/blog',
+};
 
 function formatCurrency(amount: number) {
   if (amount >= 1000000) {
@@ -163,15 +171,73 @@ export default function Blog() {
   const displayPosts = posts && posts.length > 0 ? posts : samplePosts;
   const isShowingSamples = !posts || posts.length === 0;
 
+  // Generate JSON-LD for blog listing
+  const blogJsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "SkyCapital Funding Blog",
+      "description": "Success stories and funding news from SkyCapital",
+      "url": "https://skycapnow.com/blog",
+      "publisher": {
+        "@type": "Organization",
+        "name": "SkyCapital",
+        "logo": "https://skycapnow.com/favicon.png"
+      },
+      "blogPost": displayPosts.slice(0, 10).map(post => ({
+        "@type": "BlogPosting",
+        "headline": post.title,
+        "description": post.content.substring(0, 160),
+        "image": post.featured_image_url || "https://skycapnow.com/favicon.png",
+        "datePublished": post.deal_date || new Date().toISOString(),
+        "author": {
+          "@type": "Organization",
+          "name": "SkyCapital"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "SkyCapital",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://skycapnow.com/favicon.png"
+          }
+        }
+      }))
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://skycapnow.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Funding Blog",
+          "item": "https://skycapnow.com/blog"
+        }
+      ]
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title={BLOG_SEO.title}
+        description={BLOG_SEO.description}
+        canonicalUrl={BLOG_SEO.canonicalUrl}
+        jsonLd={blogJsonLd}
+      />
       <Navbar />
       
       {/* Hero Header */}
       <header className="relative pt-40 pb-20 md:pt-48 md:pb-28 overflow-hidden">
         <div className="absolute inset-0 gradient-hero" />
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1560472355-536de3962603?w=1920&q=80')] bg-cover bg-center opacity-10" />
-        
         <div className="container relative z-10">
           <Link
             to="/"
