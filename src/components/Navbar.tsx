@@ -55,15 +55,17 @@ const Navbar = () => {
     >
       <div className="container px-4 md:px-8">
         <div className={`flex items-center justify-between transition-all duration-300 ${
-          isScrolled ? "h-24" : "h-36"
+          isScrolled ? "h-16" : "h-20"
         }`}>
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img 
               src={skycapitalLogo} 
               alt="Sky Capital" 
+              loading="eager"
+              decoding="async"
               className={`w-auto brightness-0 invert transition-all duration-300 ${
-                isScrolled ? "h-32 md:h-40" : "h-48 md:h-56"
+                isScrolled ? "h-12 md:h-16" : "h-16 md:h-20"
               }`}
             />
           </Link>
