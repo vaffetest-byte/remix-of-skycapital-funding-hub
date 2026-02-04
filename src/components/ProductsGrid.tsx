@@ -74,6 +74,10 @@ const ProductsGrid = () => {
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
   const { ref: gridRef, isVisible: gridVisible } = useScrollAnimation({ threshold: 0.05 });
 
+  // Separate featured and regular products for better layout
+  const featuredProducts = products.filter(p => p.featured);
+  const regularProducts = products.filter(p => !p.featured);
+
   return (
     <section 
       id="products" 
@@ -104,12 +108,33 @@ const ProductsGrid = () => {
           </p>
         </div>
 
-        {/* Products grid */}
-        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((product, index) => (
+        {/* Featured Products Row */}
+        <div ref={gridRef} className="mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {featuredProducts.map((product, index) => (
+              <div
+                key={product.title}
+                className={`scroll-reveal-scale stagger-${Math.min(index + 1, 4)} ${gridVisible ? 'visible' : ''}`}
+              >
+                <ProductCard
+                  icon={product.icon}
+                  title={product.title}
+                  description={product.description}
+                  featured={product.featured}
+                  customLink={product.customLink}
+                  delay={0}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Regular Products Row */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+          {regularProducts.map((product, index) => (
             <div
               key={product.title}
-              className={`scroll-reveal-scale stagger-${Math.min(index + 1, 8)} ${gridVisible ? 'visible' : ''}`}
+              className={`scroll-reveal-scale stagger-${Math.min(index + 5, 8)} ${gridVisible ? 'visible' : ''}`}
             >
               <ProductCard
                 icon={product.icon}
