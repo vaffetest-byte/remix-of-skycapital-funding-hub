@@ -20,11 +20,10 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { label: "Funding Solutions", href: "#products" },
-    { label: "How It Works", href: "#process" },
+    { label: "Solutions", href: "#products" },
+    { label: "Process", href: "#process" },
     { label: "Why Us", href: "#why-us" },
-    { label: "Testimonials", href: "#testimonials" },
-    { label: "Funding Deals", href: "/blog", isPage: true },
+    { label: "Funding Blog", href: "/blog", isPage: true },
   ];
 
   const handleNavClick = (href: string) => {
@@ -72,13 +71,13 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop navigation */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
               link.isPage ? (
                 <Link
                   key={link.label}
                   to={link.href}
-                  className="text-white/80 hover:text-white transition-colors duration-300 font-medium relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-accent after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left"
+                  className="text-white/80 hover:text-white transition-colors duration-300 font-medium text-sm relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-accent after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left"
                 >
                   {link.label}
                 </Link>
@@ -86,7 +85,7 @@ const Navbar = () => {
                 <button
                   key={link.label}
                   onClick={() => handleNavClick(link.href)}
-                  className="text-white/80 hover:text-white transition-colors duration-300 font-medium relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-accent after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left"
+                  className="text-white/80 hover:text-white transition-colors duration-300 font-medium text-sm relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-accent after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left"
                 >
                   {link.label}
                 </button>
@@ -95,19 +94,14 @@ const Navbar = () => {
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center gap-4">
-            <a href="tel:5165230489" className="flex items-center gap-2 text-white hover:text-accent transition-all duration-500 hover:scale-105 group">
-              <Phone className="w-4 h-4 animate-[pulse_3s_ease-in-out_infinite] group-hover:text-accent" />
-              <span className="font-medium">(516)-523-0489</span>
+          <div className="hidden lg:flex items-center gap-3">
+            <a href="tel:5165230489" className="flex items-center gap-2 text-white hover:text-accent transition-all duration-500 group">
+              <Phone className="w-4 h-4 group-hover:text-accent" />
+              <span className="font-medium text-sm">(516)-523-0489</span>
             </a>
-            <Button variant="accent" size="default" className="animate-pulse-glow" asChild>
+            <Button variant="accent" size="sm" asChild>
               <a href="https://apply.sbaloan.app/11111-skycapnowllc" target="_blank" rel="noopener noreferrer">
-                SBA Application
-              </a>
-            </Button>
-            <Button variant="accent" size="default" className="animate-pulse-glow" asChild>
-              <a href="https://forms.zohopublic.com/skycapnow1/form/TimetoDriveYourBusinessForwardAreYouIn/formperma/n2L5-eBVJbTbpdVyxykY3VosikegBfB5UfccY72D5gA" target="_blank" rel="noopener noreferrer">
-                Business Application
+                Apply Now
               </a>
             </Button>
           </div>
