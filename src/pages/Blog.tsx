@@ -273,14 +273,6 @@ export default function Blog() {
 
       {/* Content */}
       <main className="container py-16 md:py-24">
-        {isShowingSamples && (
-          <div className="mb-8 p-4 rounded-lg bg-accent/10 border border-accent/20 text-center">
-            <p className="text-sm text-muted-foreground">
-              📝 These are sample posts. Log in as admin to create real funding blog posts.
-            </p>
-          </div>
-        )}
-        
         {isLoading ? (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <BlogSkeleton featured />
