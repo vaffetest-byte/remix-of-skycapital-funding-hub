@@ -23,6 +23,7 @@ const Navbar = () => {
     { label: "Financial Solutions", href: "#products" },
     { label: "Process", href: "#process" },
     { label: "Why Us", href: "#why-us" },
+    { label: "Testimonials", href: "#testimonials" },
     { label: "Funding Blog", href: "/blog", isPage: true },
   ];
 
