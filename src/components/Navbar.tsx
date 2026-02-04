@@ -55,7 +55,7 @@ const Navbar = () => {
     >
       <div className="container px-4 md:px-8">
         <div className={`flex items-center justify-between transition-all duration-300 ${
-          isScrolled ? "h-16" : "h-20"
+          isScrolled ? "h-20" : "h-28"
         }`}>
           {/* Logo */}
           <Link to="/" className="flex items-center">
@@ -65,7 +65,7 @@ const Navbar = () => {
               loading="eager"
               decoding="async"
               className={`w-auto brightness-0 invert transition-all duration-300 ${
-                isScrolled ? "h-12 md:h-16" : "h-16 md:h-20"
+                isScrolled ? "h-20 md:h-24" : "h-28 md:h-32"
               }`}
             />
           </Link>
