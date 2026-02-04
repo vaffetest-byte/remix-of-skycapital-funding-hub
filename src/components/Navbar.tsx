@@ -62,7 +62,7 @@ const Navbar = () => {
           <Link to="/" className="flex items-center">
             <img 
               src={skycapitalLogo} 
-              alt="Sky Capital" 
+              alt="SkyCapital - Nationwide Business Funding for MCA, Working Capital & Small Business Loans" 
               loading="eager"
               decoding="async"
               className={`w-auto brightness-0 invert transition-all duration-300 ${
@@ -116,6 +116,9 @@ const Navbar = () => {
           <button
             className="lg:hidden text-white p-2"
             onClick={() => setIsOpen(!isOpen)}
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
+            aria-label={isOpen ? "Close menu" : "Open menu"}
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -123,7 +126,7 @@ const Navbar = () => {
 
         {/* Mobile menu */}
         {isOpen && (
-          <div className="lg:hidden py-6 border-t border-white/10">
+          <div id="mobile-menu" className="lg:hidden py-6 border-t border-white/10" role="navigation" aria-label="Mobile navigation">
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 link.isPage ? (
