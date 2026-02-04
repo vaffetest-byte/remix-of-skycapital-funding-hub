@@ -64,21 +64,36 @@ const Footer = () => {
               We offer MCA, working capital loans, and small business financing with fast approval.
             </p>
             <div className="flex gap-4">
-              {[
-                { Icon: Facebook, label: "Facebook" },
-                { Icon: Twitter, label: "Twitter" },
-                { Icon: Linkedin, label: "LinkedIn" },
-                { Icon: Instagram, label: "Instagram" }
-              ].map(({ Icon, label }) => (
-                <a 
-                  key={label}
-                  href="#" 
-                  className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors duration-300"
-                  aria-label={`Follow SkyCapital on ${label}`}
-                >
-                  <Icon className="w-5 h-5" aria-hidden="true" />
-                </a>
-              ))}
+              <a 
+                href="https://www.linkedin.com/company/sky-cap"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center hover:bg-[#0A66C2] transition-colors duration-300"
+                aria-label="Follow SkyCapital on LinkedIn"
+              >
+                <Linkedin className="w-5 h-5" aria-hidden="true" />
+              </a>
+              <a 
+                href="#"
+                className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors duration-300"
+                aria-label="Follow SkyCapital on Facebook"
+              >
+                <Facebook className="w-5 h-5" aria-hidden="true" />
+              </a>
+              <a 
+                href="#"
+                className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors duration-300"
+                aria-label="Follow SkyCapital on Twitter"
+              >
+                <Twitter className="w-5 h-5" aria-hidden="true" />
+              </a>
+              <a 
+                href="#"
+                className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors duration-300"
+                aria-label="Follow SkyCapital on Instagram"
+              >
+                <Instagram className="w-5 h-5" aria-hidden="true" />
+              </a>
             </div>
           </div>
 
