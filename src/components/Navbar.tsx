@@ -99,14 +99,14 @@ const Navbar = () => {
               <Phone className="w-3.5 h-3.5 group-hover:text-accent" />
               <span className="font-medium text-xs">(516)-523-0489</span>
             </a>
-            <Button variant="accent" size="sm" className="text-xs px-3 py-1.5 h-auto" asChild>
+            <Button variant="accent" size="sm" className="text-xs px-3 py-1.5 h-auto animate-pulse-glow" asChild>
               <a href="https://apply.sbaloan.app/11111-skycapnowllc" target="_blank" rel="noopener noreferrer">
-                SBA Apply
+                SBA Application
               </a>
             </Button>
-            <Button variant="accent" size="sm" className="text-xs px-3 py-1.5 h-auto" asChild>
+            <Button variant="accent" size="sm" className="text-xs px-3 py-1.5 h-auto animate-pulse-glow" asChild>
               <a href="https://forms.zohopublic.com/skycapnow1/form/TimetoDriveYourBusinessForwardAreYouIn/formperma/n2L5-eBVJbTbpdVyxykY3VosikegBfB5UfccY72D5gA" target="_blank" rel="noopener noreferrer">
-                Business Apply
+                Business Application
               </a>
             </Button>
           </div>
