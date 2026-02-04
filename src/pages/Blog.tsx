@@ -85,7 +85,7 @@ const samplePosts = [
 function BlogPostCard({ post, featured = false }: { post: any; featured?: boolean }) {
   return (
     <article 
-      className={`group relative overflow-hidden rounded-2xl bg-card border border-border/50 transition-all duration-500 hover:shadow-elevated hover:border-primary/20 ${
+      className={`group relative overflow-hidden rounded-2xl border border-border/50 transition-all duration-500 hover:shadow-elevated hover:border-primary/20 ${
         featured ? 'md:col-span-2 md:row-span-2' : ''
       }`}
     >
