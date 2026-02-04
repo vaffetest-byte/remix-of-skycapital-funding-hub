@@ -95,13 +95,18 @@ const Navbar = () => {
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-3">
-            <a href="tel:5165230489" className="flex items-center gap-2 text-white hover:text-accent transition-all duration-500 group">
-              <Phone className="w-4 h-4 group-hover:text-accent" />
-              <span className="font-medium text-sm">(516)-523-0489</span>
+            <a href="tel:5165230489" className="flex items-center gap-1.5 text-white hover:text-accent transition-all duration-500 group">
+              <Phone className="w-3.5 h-3.5 group-hover:text-accent" />
+              <span className="font-medium text-xs">(516)-523-0489</span>
             </a>
-            <Button variant="accent" size="sm" asChild>
+            <Button variant="accent" size="sm" className="text-xs px-3 py-1.5 h-auto" asChild>
               <a href="https://apply.sbaloan.app/11111-skycapnowllc" target="_blank" rel="noopener noreferrer">
-                Apply Now
+                SBA Apply
+              </a>
+            </Button>
+            <Button variant="accent" size="sm" className="text-xs px-3 py-1.5 h-auto" asChild>
+              <a href="https://forms.zohopublic.com/skycapnow1/form/TimetoDriveYourBusinessForwardAreYouIn/formperma/n2L5-eBVJbTbpdVyxykY3VosikegBfB5UfccY72D5gA" target="_blank" rel="noopener noreferrer">
+                Business Apply
               </a>
             </Button>
           </div>
