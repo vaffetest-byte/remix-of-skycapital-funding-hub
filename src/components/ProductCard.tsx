@@ -18,10 +18,10 @@ const ProductCard = ({ icon: Icon, title, description, delay = 0, featured = fal
       href={applicationUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className={`group relative rounded-2xl p-8 transition-all duration-500 hover:-translate-y-3 overflow-hidden cursor-pointer block ${
+      className={`group relative rounded-2xl p-6 lg:p-8 transition-all duration-500 hover:-translate-y-2 overflow-hidden cursor-pointer block h-full flex flex-col ${
         featured 
-          ? "bg-gradient-to-br from-primary to-secondary text-primary-foreground shadow-elevated" 
-          : "bg-card shadow-soft hover:shadow-elevated border border-border/50"
+          ? "bg-gradient-to-br from-primary via-primary/95 to-secondary text-primary-foreground shadow-elevated" 
+          : "bg-card shadow-soft hover:shadow-elevated border border-border/50 hover:border-primary/30"
       }`}
       style={{ animationDelay: `${delay}ms` }}
     >
@@ -40,31 +40,31 @@ const ProductCard = ({ icon: Icon, title, description, delay = 0, featured = fal
       }`} style={{ clipPath: "polygon(100% 0, 100% 100%, 0 100%)" }} />
 
       {/* Icon container */}
-      <div className={`relative w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 ${
+      <div className={`relative w-14 h-14 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 group-hover:scale-105 ${
         featured 
           ? "bg-white/20 backdrop-blur-sm" 
-          : "bg-gradient-to-br from-primary to-secondary shadow-lg"
+          : "bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20"
       }`}>
-        <Icon className={`w-8 h-8 ${featured ? "text-white" : "text-primary-foreground"}`} />
+        <Icon className={`w-7 h-7 ${featured ? "text-white" : "text-primary"}`} />
       </div>
 
       {/* Content */}
-      <h3 className={`text-xl font-bold mb-3 transition-colors duration-300 ${
+      <h3 className={`text-lg font-bold mb-2 transition-colors duration-300 leading-tight ${
         featured ? "text-white" : "text-foreground group-hover:text-primary"
       }`}>
         {title}
       </h3>
-      <p className={`leading-relaxed mb-4 ${
-        featured ? "text-white/80" : "text-muted-foreground"
+      <p className={`text-sm leading-relaxed flex-1 ${
+        featured ? "text-white/85" : "text-muted-foreground"
       }`}>
         {description}
       </p>
 
-      {/* Learn more link */}
-      <div className={`flex items-center gap-2 text-sm font-semibold transition-all duration-300 ${
+      {/* Apply Now link - always visible */}
+      <div className={`flex items-center gap-2 text-sm font-semibold mt-5 pt-4 border-t transition-all duration-300 ${
         featured 
-          ? "text-white/90 group-hover:text-white" 
-          : "text-primary opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0"
+          ? "text-white border-white/20 group-hover:gap-3" 
+          : "text-primary border-border/50 group-hover:gap-3"
       }`}>
         <span>Apply Now</span>
         <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
