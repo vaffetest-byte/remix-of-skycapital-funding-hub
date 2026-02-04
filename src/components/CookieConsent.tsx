@@ -1,8 +1,20 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Cookie, X } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
 
 const COOKIE_CONSENT_KEY = 'skycapital-cookie-consent';
+const VISITOR_ID_KEY = 'skycapital-visitor-id';
+
+// Generate a unique visitor ID
+function getOrCreateVisitorId(): string {
+  let visitorId = localStorage.getItem(VISITOR_ID_KEY);
+  if (!visitorId) {
+    visitorId = `${Date.now()}-${Math.random().toString(36).substring(2, 15)}`;
+    localStorage.setItem(VISITOR_ID_KEY, visitorId);
+  }
+  return visitorId;
+}
 
 export function CookieConsent() {
   const [isVisible, setIsVisible] = useState(false);
@@ -17,14 +29,37 @@ export function CookieConsent() {
     }
   }, []);
 
-  const handleAccept = () => {
-    localStorage.setItem(COOKIE_CONSENT_KEY, 'accepted');
-    setIsVisible(false);
+  const saveConsentToSupabase = async (status: 'accepted' | 'declined') => {
+    try {
+      const visitorId = getOrCreateVisitorId();
+      
+      // Store consent in Supabase for compliance tracking
+      const { error } = await supabase
+        .from('cookie_consents')
+        .insert({
+          visitor_id: visitorId,
+          consent_status: status,
+          user_agent: navigator.userAgent,
+        });
+
+      if (error) {
+        console.error('Failed to save cookie consent:', error);
+      }
+    } catch (err) {
+      console.error('Error saving cookie consent:', err);
+    }
   };
 
-  const handleDecline = () => {
+  const handleAccept = async () => {
+    localStorage.setItem(COOKIE_CONSENT_KEY, 'accepted');
+    setIsVisible(false);
+    await saveConsentToSupabase('accepted');
+  };
+
+  const handleDecline = async () => {
     localStorage.setItem(COOKIE_CONSENT_KEY, 'declined');
     setIsVisible(false);
+    await saveConsentToSupabase('declined');
   };
 
   if (!isVisible) return null;
