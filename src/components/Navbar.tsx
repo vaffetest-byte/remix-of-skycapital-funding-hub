@@ -20,7 +20,7 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { label: "Solutions", href: "#products" },
+    { label: "Financial Solutions", href: "#products" },
     { label: "Process", href: "#process" },
     { label: "Why Us", href: "#why-us" },
     { label: "Funding Blog", href: "/blog", isPage: true },
