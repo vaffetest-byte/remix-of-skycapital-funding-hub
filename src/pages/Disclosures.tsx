@@ -1,11 +1,17 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SEOHead from "@/components/SEOHead";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Disclosures = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Disclosures | SkyCapital Business Funding"
+        description="Important disclosures about SkyCapital's business funding services, MCA terms, SBA loans, rates, fees, and state licensing information."
+        canonicalUrl="https://skycapnow.com/disclosures"
+      />
       <Navbar />
       
       <main className="pt-40 pb-20">

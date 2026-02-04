@@ -1,11 +1,17 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SEOHead from "@/components/SEOHead";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Privacy = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Privacy Policy | SkyCapital Business Funding"
+        description="Learn how SkyCapital protects your personal and business information. Read our privacy policy for details on data collection, use, and security."
+        canonicalUrl="https://skycapnow.com/privacy"
+      />
       <Navbar />
       
       <main className="pt-40 pb-20">

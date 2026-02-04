@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:geo="http://www.google.com/geo/schemas/sitemap/1.0">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
-  <!-- Homepage - Business Funding New York & Florida -->
+  <!-- Homepage - Business Funding Nationwide -->
   <url>
     <loc>https://skycapnow.com/</loc>
-    <lastmod>2024-12-08</lastmod>
+    <lastmod>2025-02-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -13,7 +12,7 @@
   <!-- Funding Solutions Section -->
   <url>
     <loc>https://skycapnow.com/#products</loc>
-    <lastmod>2024-12-08</lastmod>
+    <lastmod>2025-02-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -21,7 +20,7 @@
   <!-- How It Works - Funding Process -->
   <url>
     <loc>https://skycapnow.com/#process</loc>
-    <lastmod>2024-12-08</lastmod>
+    <lastmod>2025-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -29,7 +28,7 @@
   <!-- Why Choose Us -->
   <url>
     <loc>https://skycapnow.com/#why-us</loc>
-    <lastmod>2024-12-08</lastmod>
+    <lastmod>2025-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -37,9 +36,41 @@
   <!-- Testimonials -->
   <url>
     <loc>https://skycapnow.com/#testimonials</loc>
-    <lastmod>2024-12-08</lastmod>
+    <lastmod>2025-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+
+  <!-- Blog - Funding Success Stories -->
+  <url>
+    <loc>https://skycapnow.com/blog</loc>
+    <lastmod>2025-02-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://skycapnow.com/privacy</loc>
+    <lastmod>2025-02-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <!-- Terms of Service -->
+  <url>
+    <loc>https://skycapnow.com/terms</loc>
+    <lastmod>2025-02-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <!-- Disclosures -->
+  <url>
+    <loc>https://skycapnow.com/disclosures</loc>
+    <lastmod>2025-02-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
   </url>
 
 </urlset>

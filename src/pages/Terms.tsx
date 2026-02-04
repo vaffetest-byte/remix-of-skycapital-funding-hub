@@ -1,11 +1,17 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SEOHead from "@/components/SEOHead";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Terms = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Terms of Service | SkyCapital Business Funding"
+        description="Read SkyCapital's terms of service. Understand the conditions for using our business funding services, eligibility requirements, and user responsibilities."
+        canonicalUrl="https://skycapnow.com/terms"
+      />
       <Navbar />
       
       <main className="pt-40 pb-20">
