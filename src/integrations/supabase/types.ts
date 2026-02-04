@@ -14,13 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      blog_posts: {
+        Row: {
+          company_name: string
+          content: string
+          created_at: string
+          deal_date: string | null
+          featured_image_url: string | null
+          funding_amount: number | null
+          id: string
+          published: boolean
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          company_name: string
+          content: string
+          created_at?: string
+          deal_date?: string | null
+          featured_image_url?: string | null
+          funding_amount?: number | null
+          id?: string
+          published?: boolean
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          company_name?: string
+          content?: string
+          created_at?: string
+          deal_date?: string | null
+          featured_image_url?: string | null
+          funding_amount?: number | null
+          id?: string
+          published?: boolean
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      is_admin: { Args: never; Returns: boolean }
     }
     Enums: {
       [_ in never]: never
