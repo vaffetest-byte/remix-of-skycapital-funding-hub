@@ -179,11 +179,11 @@ const Footer = () => {
       <div className="border-t border-white/10">
         <div className="container px-4 md:px-8 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-primary-foreground/60">
-            <p>© 2024 SkyCapital - Nationwide Business Funding. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} SkyCapital - Nationwide Business Funding. All rights reserved.</p>
             <div className="flex gap-6">
-              <a href="#" className="hover:text-primary-foreground transition-colors duration-300">Privacy Policy</a>
-              <a href="#" className="hover:text-primary-foreground transition-colors duration-300">Terms of Service</a>
-              <a href="#" className="hover:text-primary-foreground transition-colors duration-300">Disclosures</a>
+              <a href="/privacy" className="hover:text-primary-foreground transition-colors duration-300">Privacy Policy</a>
+              <a href="/terms" className="hover:text-primary-foreground transition-colors duration-300">Terms of Service</a>
+              <a href="/disclosures" className="hover:text-primary-foreground transition-colors duration-300">Disclosures</a>
             </div>
           </div>
           <p className="text-xs text-primary-foreground/40 mt-4 text-center md:text-left">
