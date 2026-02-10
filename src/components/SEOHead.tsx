@@ -20,7 +20,7 @@ export default function SEOHead({
   title,
   description,
   canonicalUrl,
-  ogImage = 'https://skycapnow.com/favicon.png',
+  ogImage = 'https://skycapnow.com/og-image.jpg',
   ogType = 'website',
   article,
   jsonLd,
